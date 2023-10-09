@@ -2,9 +2,10 @@ import { Loader } from 'components/Loader/Loader';
 import toast from 'react-hot-toast';
 import { useEffect, useState, useRef } from 'react';
 import { getMovieDetails } from 'components/api';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 import { GoBack } from 'components/GoBack/GoBack';
+import { GoTo } from '../components/GoBack/GoBack.styled';
 
 export const MovieDetails = () => {
   const [error, setError] = useState(null);
@@ -26,7 +27,6 @@ export const MovieDetails = () => {
       try {
         const movie = await getMovieDetails(movieId, signal);
         setMovie(movie);
-        console.log(movie);
       } catch (error) {
         if (error.code !== 'ERR_CANCELED') {
           setError(toast.error('Oops! Something went wrong...'));
@@ -51,10 +51,10 @@ export const MovieDetails = () => {
           <h3>Additional information</h3>
           <ul>
             <li>
-              <Link to="cast">Cast</Link>
+              <GoTo to="cast">Cast</GoTo>
             </li>
             <li>
-              <Link to="reviews">Reviews</Link>
+              <GoTo to="reviews">Reviews</GoTo>
             </li>
             <Outlet />
           </ul>
@@ -63,3 +63,5 @@ export const MovieDetails = () => {
     </>
   );
 };
+
+export default MovieDetails;

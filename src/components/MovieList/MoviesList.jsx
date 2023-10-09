@@ -1,17 +1,18 @@
 import { Poster } from 'components/Poster/Poster';
 import { Link } from 'react-router-dom';
+import { List, Item, Title } from './MoviesList.styled';
 
 export const MoviesList = ({ movies }) => {
   return (
-    <ul>
+    <List>
       {movies.map(({ id, title, poster_path }) => (
-        <li key={id}>
+        <Item key={id}>
           <Link to={`/movies/${id}`}>
-            <Poster path={poster_path} width={200} />
-            <h3>{title}</h3>
+            <Poster path={poster_path} width={250} />
+            <Title>{title}</Title>
           </Link>
-        </li>
+        </Item>
       ))}
-    </ul>
+    </List>
   );
 };

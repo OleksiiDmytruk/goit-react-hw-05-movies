@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
+import { GoTo } from './GoBack.styled';
 
 export const GoBack = ({ path }) => {
-  return <Link to={path}>{'<--Go back'}</Link>;
+  return <GoTo to={path}>{'<--Go back'}</GoTo>;
 };

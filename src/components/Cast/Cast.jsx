@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { getMovieCredits } from 'components/api';
 import { useParams } from 'react-router-dom';
 import { Poster } from 'components/Poster/Poster';
+import { List } from './Cast.styled';
 
 export const Cast = () => {
   const [error, setError] = useState(null);
@@ -22,7 +23,6 @@ export const Cast = () => {
       try {
         const cast = await getMovieCredits(movieId, signal);
         setCredits(cast);
-        console.log(cast);
       } catch (error) {
         if (error.code !== 'ERR_CANCELED') {
           setError(toast.error('Oops! Something went wrong...'));
@@ -41,14 +41,14 @@ export const Cast = () => {
     <>
       {loader && <Loader />}
       {credits.length !== 0 && !error && (
-        <ul>
+        <List>
           {credits.map(({ name, profile_path }) => (
             <li key={name}>
-              <Poster path={profile_path} width={100} />
+              <Poster path={profile_path} width={150} />
               <h4>{name}</h4>
             </li>
           ))}
-        </ul>
+        </List>
       )}
     </>
   );

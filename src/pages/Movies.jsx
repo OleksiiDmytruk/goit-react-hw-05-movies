@@ -58,3 +58,5 @@ export const Movies = () => {
     </main>
   );
 };
+
+export default Movies;

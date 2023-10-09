@@ -12,8 +12,24 @@ export const Container = styled.div`
 `;
 export const StyledLink = styled(NavLink)`
   color: black;
+  border: 1px solid black;
+  border-radius: 6px;
+  text-transform: capitalize;
+  padding: 4px 8px;
 
   &.active {
-    color: blue;
+    color: blueviolet;
+    border-color: blueviolet;
   }
+`;
+
+export const Header = styled.header`
+  display: flex;
+  align-items: start;
+  width: 100%;
+  border-bottom: 2px solid blue;
+`;
+export const Nav = styled.nav`
+  display: flex;
+  gap: 16px;
 `;

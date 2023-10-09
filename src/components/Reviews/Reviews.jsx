@@ -21,7 +21,6 @@ export const Reviews = () => {
       try {
         const reviews = await getMovieReviews(movieId, signal);
         setReviews(reviews);
-        console.log(reviews);
       } catch (error) {
         if (error.code !== 'ERR_CANCELED') {
           setError(toast.error('Oops! Something went wrong...'));
